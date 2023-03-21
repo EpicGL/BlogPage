@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  BlogPage
+{% endblock title %}
+
+{% block body %}
+  
+{% include 'navbar.html' %}
+<div class="container card card-body">
+  <h1>About Me</h1>
+  <p>Hi, my name is {{ name }}. I'm a {{ profession }} based in {{ city }}, and I love to {{ hobbies }} in my free time.</p>
+  <p>Some of my favorite things include:</p>
+  <ul>
+    <li>{{ favorite_color }} is my favorite color</li>
+    <li>I enjoy listening to {{ favorite_music_genre }} music</li>
+    <li>My favorite movie is {{ favorite_movie }}</li>
+    <li>When I'm not working, I like to {{ another_hobby }}</li>
+  </ul>
+  <p>Thanks for stopping by!</p>
+</div>  
+
+{% endblock body %}
+
+
+

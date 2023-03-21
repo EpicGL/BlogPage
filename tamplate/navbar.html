@@ -1,0 +1,32 @@
+{% load static %}
+    
+<nav class="navbar navbar-expand position-sticky z-1 color-1">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Live Life</a>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarID">
+            <div class="navbar-nav">
+                <a class="nav-link active hov" aria-current="page" href="{% url 'homePage' %}">Home</a>
+                <a class="nav-link active hov" aria-current="page" href="{% url 'blogPage' %}">Blog</a>
+                <a class="nav-link active hov" aria-current="page" href="{% url 'aboutPage' %}">About</a>
+                {% if user.is_authenticated  %}
+                <a class="nav-link active hov" aria-current="page" href="{% url 'newPost' %}">New Post</a>
+                {% endif %}
+                
+            </div>
+            
+            {% if user.is_authenticated  %}
+            <div class="d-inline-flex" >
+                <div  class=" me-1 mt-2" style="font-size:18px;">Welcome, {{user}}</div>
+                <a class="btn btn-danger"  href="{% url 'logout' %}">Logout</a>
+            </div>
+            {% else %}
+            <a class="btn btn-success"  href="{% url 'login' %}">Login</a>
+            {% endif %}
+
+
+        </div>
+    </div>
+</nav>
+
+
+

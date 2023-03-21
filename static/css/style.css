@@ -1,0 +1,58 @@
+:root{
+    --text1 : #f6c453;
+    --text2 : #e1eedd;
+    --bg1: #fefbe9;
+    --bg2: #183a1d;
+    --yello: #f6c453;
+}
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.color-2{
+    background-color: var(--bg2);
+    color: var(--text2);
+}
+.color-1{
+    background-color: var(--bg1);
+    color: var(--text1);
+}
+
+.body{
+    background-color:#c8a0e2 ;
+}
+
+.sidebar-img{
+    max-width: 100%;
+}
+
+.trand-card{
+    font-family:'Times New Roman', Times, serif;
+    position:absolute;
+    padding-left: 5px;
+    width: 100%;
+    top: 40%;
+    bottom: 0px;
+    left: 0px;
+    font-weight: 700;
+    background-color: #ffffff52;
+}
+.trand-card:hover{
+    cursor: pointer;
+}
+
+.form-content{
+    max-width: 20%;
+    max-height: 10%;
+}
+
+.hov:hover{
+    background-color: rgba(0, 139, 139, 0.3);
+}
+
+@media screen and (max-width: 1000px) {
+    .mobile-off{
+        display:none
+    }
+    
+  }

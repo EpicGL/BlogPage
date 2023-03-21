@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  BlogPage
+{% endblock title %}
+
+{% block body %}
+  
+{% include 'navbar.html' %}
+  <div class="container">
+
+      {% if post %}
+      {% if article %}
+      <div class="container mt-2">
+          <div class="row">
+                <div class="col"></div>
+                <div class="col-lg-9 col-sm-12 card card-body">
+                    <img style="max-width: 100%;" class="shadow" src="{{post.image.url}}" alt="">
+                    <hr>
+                    <h2 class="mt-2 text-uppercase">{{post.title}}</h2>
+                    <h4 class="mt-2">Author: {{post.author}}</h4>
+                    <h5>Views: {{post.views}}</h5>
+                    <p class="mt-1" style="font-size: 18px;">{{post.content}}</p>
+                    
+                    {% if user.is_authenticated %}
+                    <a class="btn btn-info" href="{% url 'editPost' pk=post.id %}">Edit</a>   
+                    {% endif %}
+                    
+                        <hr>
+                        <h3 class="mb-2">Comments:</h3>
+                    {% if comment %}
+                        {% for comment in comment  %}
+                            <div class="">
+                                <div>
+                                    <strong>{{comment.name}}: </strong> {{comment.comment}}
+                                </div>
+                                
+                                {% if user.is_authenticated %}
+                                    <div>
+                                        <a class="btn btn-warning" href="{% url 'deleteComment' pk=comment.id %}">Delete</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <hr>
+                        {% endfor %}
+                    {% endif %}
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="form-control">Name:{{c_form.name}}</div>
+                        <div class="form-control">Email:{{c_form.email}}</div>
+                        <div class="form-control">Comment:{{c_form.comment}}</div>
+                        <button class="btn btn-success" type="submit">Comment</button>
+                    </form>
+                        
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+        {% else %}
+    <form class="form-control d-flex card card-body" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.title.label}}:
+        <div class="form-control form-content" >{{form.title}}</div>
+        <img style="max-width: 25%;" src="{{post.image.url}}" alt="">
+        {{form.image}}
+        <div class="form-control " > {{form.content}}</div>
+        
+        <button class="btn btn-success form-control" type="submit">Update</button>
+        <a class="btn btn-danger" href="{% url 'deletePost' pk=post.id %}"> Delete</a>
+    </form>
+
+
+    
+    {% endif %}
+{% else %}
+        <form class="form-control d-flex card card-body" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.title.label}}:
+            <div class="form-control form-content" > {{form.title}}</div>
+            {{form.image.label}}: {{form.image}}
+            <div class="form-control " > {{form.content}}</div>
+            
+            <button class="btn btn-success form-control" type="submit">submit</button>
+        </form>
+
+    <script>
+
+    </script>
+{% endif %}
+</div>
+{% endblock body %}
